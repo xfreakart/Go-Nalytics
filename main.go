@@ -13,9 +13,9 @@ func main() {
 	//By default You can call google Analytics Api 500K per day. GoLytics does two query's each time.
 	// So we can do 250K visualizations per day.
 	// That gives us 2,89 visualizations per day. If you add more widgets wiith new query's keep that in mind.
-		var refreshRate uint64
-		refreshRate = 2
-	
+	var refreshRate uint64
+	refreshRate = 2
+
 	// String array of most viwed pages titles
 	rtMostViewedTitles := getRtMostViewedPages()
 
@@ -34,7 +34,7 @@ func main() {
 
 	updateRtMostViewedByTrafficType(&rtTotalActiveUsers, &rtTrafficType, &bcData, &bcLabels)
 
-	err := ui.Init()intro
+	err := ui.Init()
 	if err != nil {
 		panic(err)
 	}
@@ -90,7 +90,7 @@ func main() {
 		t := e.Data.(ui.EvtTimer)
 
 		// Each 4 seconds we update values by quering GA.
-		if t.Count%refreshRate2  == 0 {
+		if t.Count%refreshRate == 0 {
 			rtMostViewedTitles = getRtMostViewedPages()
 			updateRtMostViewedByTrafficType(&rtTotalActiveUsers, &rtTrafficType, &bcData, &bcLabels)
 		}
